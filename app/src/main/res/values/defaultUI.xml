@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_color">@color/black</color>
+    <color name="secondary_color">@color/dark_gray</color>
+    <color name="tertiary_color">@color/white</color>
+    <color name="quaternary_color">@color/red</color>
+
+    <color name="text_in_primary_color">@color/white</color>
+    <color name="text_in_secondary_color">@color/white</color>
+    <color name="text_in_tertiary_color">@color/black</color>
+    <color name="text_in_quaternary_color">@color/white</color>
+</resources>
