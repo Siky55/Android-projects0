@@ -1,0 +1,117 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/xylophone_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="0dp"
+    tools:context=".MainActivity">
+
+    <!-- První LinearLayout pro tlačítka xylofonu -->
+    <LinearLayout
+        android:id="@+id/xylophone_buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Tlačítka xylofonu -->
+        <Button
+            android:id="@+id/buttonC"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_weight="1"
+            android:background="@drawable/xylophone_plate"
+            android:soundEffectsEnabled="false"
+            android:text="C"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/buttonD"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_weight="1"
+            android:background="@drawable/xylophone_plate"
+            android:soundEffectsEnabled="false"
+            android:text="D"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/buttonE"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_weight="1"
+            android:background="@drawable/xylophone_plate"
+            android:soundEffectsEnabled="false"
+            android:text="E"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/buttonF"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_weight="1"
+            android:background="@drawable/xylophone_plate"
+            android:soundEffectsEnabled="false"
+            android:text="F"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/buttonG"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_weight="1"
+            android:background="@drawable/xylophone_plate"
+            android:soundEffectsEnabled="false"
+            android:text="G"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/buttonA"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_weight="1"
+            android:background="@drawable/xylophone_plate"
+            android:soundEffectsEnabled="false"
+            android:text="A"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/buttonB"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_weight="1"
+            android:background="@drawable/xylophone_plate"
+            android:soundEffectsEnabled="false"
+            android:text="B"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/buttonC2"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_weight="1"
+            android:background="@drawable/xylophone_plate"
+            android:soundEffectsEnabled="false"
+            android:text="C2"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/rotateScreenButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:onClick="rotateScreen"
+            android:src="@drawable/baseline_screen_rotation_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

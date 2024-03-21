@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CircleActivity">
+
+    <ImageView
+        android:id="@+id/circleBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineForPanelH1"
+        app:layout_constraintEnd_toEndOf="@id/guidelineForSliderR"
+        app:layout_constraintStart_toStartOf="@id/guidelineForSliderL"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/kruh2" />
+
+    <ImageView
+        android:id="@+id/firstHalfCircle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineForPanelH1"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVC"
+        app:layout_constraintStart_toStartOf="@id/guidelineForPanelV1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/secondHalfCircle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineForPanelH1"
+        app:layout_constraintStart_toStartOf="@id/guidelineVC"
+        app:layout_constraintEnd_toEndOf="@id/guidelineForPanelV2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/cover1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="false"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineForPanelH1"
+        app:layout_constraintEnd_toEndOf="@id/guidelineForSliderR"
+        app:layout_constraintStart_toStartOf="@id/guidelineForSliderL"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/kryt_kruhu1_1" />
+
+    <ImageView
+        android:id="@+id/cover2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="false"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineForPanelH1"
+        app:layout_constraintEnd_toEndOf="@id/guidelineForSliderR"
+        app:layout_constraintStart_toStartOf="@id/guidelineForSliderL"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/kryt_kruhu2" />
+
+    <ImageView
+        android:id="@+id/rotControlL"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:paddingBottom="50dp"
+        android:src="@drawable/ovladani_rotace_kruhu_3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guidelineForSliderL"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/rotControlR"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:paddingBottom="50dp"
+        android:src="@drawable/ovladani_rotace_kruhu_3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guidelineForSliderR"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/rotateScreenButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:onClick="rotateScreen"
+        android:src="@drawable/baseline_screen_rotation_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineForPanelH2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidelineForPanelV2"
+        app:layout_constraintTop_toTopOf="@id/guidelineForPanelH1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/buttonLeftR"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="3dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/white_button"
+                    android:src="@drawable/left_arrow_24" />
+
+                <ImageButton
+                    android:id="@+id/zoomButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_button"
+                    android:src="@drawable/baseline_zoom_in_24"
+                    />
+
+                <ImageButton
+                    android:id="@+id/buttonRightR"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="3dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/white_button"
+                    android:src="@drawable/right_arrow_24"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/rotationModeButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="3dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/white_button"
+                    android:src="@drawable/change_rotation_mode_24"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineForPanelH2"
+        app:layout_constraintEnd_toEndOf="@id/guidelineForPanelV1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guidelineForPanelH1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/buttonLeftLL"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="3dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/white_button"
+                    android:src="@drawable/left_arrow_24" />
+
+                <ImageButton
+                    android:id="@+id/resetButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_button"
+                    android:src="@drawable/baseline_arrow_circle_up_24"/>
+
+                <ImageButton
+                    android:id="@+id/buttonRightLL"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="3dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/white_button"
+                    android:src="@drawable/right_arrow_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/coverButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_marginVertical="3dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/white_button"
+                    android:src="@drawable/baseline_circle_24"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineForPanelV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineForPanelV2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineForPanelH1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineForPanelH2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineForSliderL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineForSliderR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

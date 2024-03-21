@@ -1,21 +1,13 @@
 package com.example.firstapp;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Bundle;
-
-import android.view.View;
-
-import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
-
 
 public class MainActivity extends AppCompatActivity {
-
-    private Button btnM2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,27 +16,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); // nastavuje (XML) layout pro danou aktivitu
         // trida R obsahuje reference na vsechny zdrojove soubory aplikace (layouty, obrazky, texty...)
         setTitle("Home"); //oznaceni aktivity
-
-        btnM2=(Button) findViewById(R.id.btnM2);
-    }
-    public void ZmenaTextu(View v){
-        String jmenoTlacitka = v.getTag().toString();
-        Log.d("kliknuti","Bylo kliknuto na tlacitko: "+jmenoTlacitka);
-
-        Button b = (Button) v;
-        b.setText("Clicked");
-        TextView txt1 = findViewById(R.id.txt1); // meneni objektu z TextBoxu na Tlacitko kvuli metodam, ktere je potreba pouzit
     }
 
-    public void launchSettings(View v){
-        Intent i = new Intent(this,SettingsActivity.class); // vytvoreni Intentu ("mostu") mezi danymi aktivitami
-        startActivity(i); //presun na danou aktivitu (parametry konstruktoru tridy Intent: odkud,kam)
-        //i.putExtra("key","Ahoj");
-    }
+//        Intent i = new Intent(this,SettingsActivity.class); // vytvoreni Intentu ("mostu") mezi danymi aktivitami
+//        startActivity(i); //presun na danou aktivitu (parametry konstruktoru tridy Intent: odkud,kam)
+//        //i.putExtra("key","Ahoj"); // prenos dat za pomoci klicove hodnoty
 
-    public void launchDrawing(View v){
-        Intent i = new Intent(this,DrawingActivity.class);
-        startActivity(i);
+    public void menuButton(View v){
+
+        if(v.getId() == R.id.metronomeBtn) startActivity(new Intent(this, MetronomeActivity.class));
+        else if(v.getId() == R.id.xylophoneBtn) startActivity(new Intent(this, XylophoneActivity.class));
+        else if(v.getId() == R.id.circleBtn) startActivity(new Intent(this, CircleActivity.class));
+
     }
 
 }
