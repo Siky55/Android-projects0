@@ -198,11 +198,11 @@ public class CircleActivity extends AppCompatActivity implements View.OnTouchLis
                 initialRotation = rotationAngle;
 
                 if (v == buttonLeftR || v == buttonLeftL) {
-                    rotationAngle -= rotationStep;
+                    rotationAngle += rotationStep;
                     circle.setRotation(rotationAngle);
                     vibrator.vibrate(vibrationStrength);
                 } else if (v == buttonRightR || v == buttonRightL) {
-                    rotationAngle += rotationStep;
+                    rotationAngle -= rotationStep;
                     circle.setRotation(rotationAngle);
                     vibrator.vibrate(vibrationStrength);
                 }
@@ -211,13 +211,13 @@ public class CircleActivity extends AppCompatActivity implements View.OnTouchLis
             case MotionEvent.ACTION_MOVE:
                 float newY = event.getRawY();
                 float workingY = newY - initialY;
-
+                
                 if (v == secondHalfCircle || v == rotControlR) rotationAngle = initialRotation + workingY / 6; // Rychlost otaceni
                 else if (v == firstHalfCircle || v == rotControlL) rotationAngle = initialRotation - workingY / 6;
 
                 // V rezimu krokove otaceni
                 if (rotationBySteps)  {
-                    rotationAngle = Math.round(rotationAngle / rotationStep) * rotationStep;
+                    rotationAngle = Math.round(rotationAngle / rotationStep) * rotationStep; // vypocet nejblizsiho nasobku rotationStep
                 }
                 circle.setRotation(rotationAngle);
                 break;

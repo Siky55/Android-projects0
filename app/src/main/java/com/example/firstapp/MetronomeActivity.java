@@ -4,6 +4,7 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,8 @@ public class MetronomeActivity extends AppCompatActivity {
 
     private SoundPool soundPool;
     private int soundId;
+
+    private long lastTickTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +66,10 @@ public class MetronomeActivity extends AppCompatActivity {
             Toast.makeText(MetronomeActivity.this, "Neplatná hodnota BPM", Toast.LENGTH_SHORT).show();
             return;
         }
-
         isRunning = true;
-        toggleIndicator(); // Blikne indikátorem při spuštění metronomu
-        handler.postDelayed(metronomeRunnable, 60000 / bpm); // Spustí metronom se správným časováním
+        indicatorImageView.setImageResource(R.drawable.red_indicator);
+        indicatorImageView.setTag("red");
+        handler.postDelayed(metronomeRunnable, calculateDelay(bpm)); // Spustí metronom se správným časováním
     }
 
     private void stopMetronome() {
@@ -75,31 +78,30 @@ public class MetronomeActivity extends AppCompatActivity {
         indicatorImageView.setImageResource(R.drawable.grey_indicator);
     }
 
-    private boolean isFirstBeat = true;
-
     private void toggleIndicator() {
-        if (isFirstBeat) {
-            isFirstBeat = false;
+        soundPool.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f);
+        if (indicatorImageView.getTag() == null || indicatorImageView.getTag() == "grey") {
             indicatorImageView.setImageResource(R.drawable.red_indicator);
             indicatorImageView.setTag("red");
-            soundPool.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f);
         } else {
-            if (indicatorImageView.getTag() == null || indicatorImageView.getTag().equals("grey")) {
-                indicatorImageView.setImageResource(R.drawable.red_indicator);
-                indicatorImageView.setTag("red");
-            } else {
-                indicatorImageView.setImageResource(R.drawable.grey_indicator);
-                indicatorImageView.setTag("grey");
-            }
+            indicatorImageView.setImageResource(R.drawable.grey_indicator);
+            indicatorImageView.setTag("grey");
         }
     }
 
+    private long calculateDelay(int bpm) {
+        long currentSystemTime = SystemClock.elapsedRealtime();
+        long ticksElapsed = currentSystemTime - lastTickTime;
+        lastTickTime = currentSystemTime;
+        long ticksPerBeat = 60000 / bpm;
+        return ticksPerBeat - ticksElapsed;
+    }
 
     private Runnable metronomeRunnable = new Runnable() {
         @Override
         public void run() {
             toggleIndicator(); // Blikne indikátorem v pravidelných intervalech
-            handler.postDelayed(this, 60000 / bpm); // 60000 ms (1 minute) divided by bpm gives interval in milliseconds
+            handler.postDelayed(this, calculateDelay(bpm)); // 60000 ms (1 minute) divided by bpm gives interval in milliseconds
         }
     };
 

@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-
 public class SettingsActivity extends Activity {
     private Button btn; //lepsi zpusob prace s prvky je inicializace jejich promennych na zacatku pro celou tridu/aktivitu
 
@@ -36,7 +34,7 @@ public class SettingsActivity extends Activity {
 
     public void backToMenu(View v)
     {
-        Intent i2 = new Intent(this,MainActivity.class); // vytvoreni Intentu (mostu) mezi danymi aktivitami
+        Intent i2 = new Intent(this, MainActivity0.class); // vytvoreni Intentu (mostu) mezi danymi aktivitami
         startActivity(i2);
     }
 
