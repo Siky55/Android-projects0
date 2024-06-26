@@ -47,7 +47,7 @@
         android:onClick="menuButton"
         app:layout_constraintBottom_toTopOf="@id/guideline_mid_horizontal"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
-        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintHeight_percent="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline_horizontal"
         app:layout_constraintWidth_percent="0.4" />
@@ -61,7 +61,7 @@
         android:onClick="menuButton"
         app:layout_constraintBottom_toTopOf="@id/guideline_mid_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintHeight_percent="0.15"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical"
         app:layout_constraintTop_toTopOf="@id/guideline_horizontal"
         app:layout_constraintWidth_percent="0.4" />
@@ -75,7 +75,7 @@
         android:onClick="menuButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
-        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintHeight_percent="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline_mid_horizontal"
         app:layout_constraintWidth_percent="0.4" />
@@ -89,7 +89,7 @@
         android:onClick="menuButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintHeight_percent="0.15"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical"
         app:layout_constraintTop_toTopOf="@id/guideline_mid_horizontal"
         app:layout_constraintWidth_percent="0.4" />
