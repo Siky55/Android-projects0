@@ -26,7 +26,7 @@ public class MainActivity0 extends AppCompatActivity {
 
         if(v.getId() == R.id.metronomeBtn) startActivity(new Intent(this, MetronomeActivity.class));
         else if(v.getId() == R.id.xylophoneBtn) startActivity(new Intent(this, XylophoneActivity.class));
-        else if(v.getId() == R.id.circleBtn) startActivity(new Intent(this, CircleActivity.class));
+        else if(v.getId() == R.id.circlePanel) startActivity(new Intent(this, CircleActivity.class));
         else if(v.getId() == R.id.settingsBtn) startActivity(new Intent(this, MainActivity.class));
 
     }

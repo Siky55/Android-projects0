@@ -35,7 +35,7 @@ public class CircleActivity extends AppCompatActivity implements View.OnTouchLis
         setContentView(R.layout.activity_circle);
 
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        circle = findViewById(R.id.circleBtn);
+        circle = findViewById(R.id.circlePanel);
         cover1 = findViewById(R.id.cover1);
         cover2 = findViewById(R.id.cover2);
         rotControlL = findViewById(R.id.rotControlL);

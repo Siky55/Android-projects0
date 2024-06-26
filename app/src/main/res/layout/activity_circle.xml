@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/circleBtn"
+        android:id="@+id/circlePanel"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@id/guidelineForPanelH1"
@@ -97,8 +97,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@id/guidelineForPanelH2"
-        app:layout_constraintEnd_toEndOf="@id/guidelineForPanelV2"
-        app:layout_constraintStart_toStartOf="@id/guidelineForPanelV1"
+        app:layout_constraintEnd_toEndOf="@id/guidelineForPanelVR"
+        app:layout_constraintStart_toStartOf="@id/guidelineForPanelVL"
         app:layout_constraintTop_toTopOf="@id/guidelineForPanelH1">
 
         <LinearLayout
@@ -214,19 +214,19 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guidelineForPanelV1"
+        app:layout_constraintEnd_toEndOf="@id/guidelineForPanelVL"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guidelineForPanelH1" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineForPanelV1"
+        android:id="@+id/guidelineForPanelVL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.22" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineForPanelV2"
+        android:id="@+id/guidelineForPanelVR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
