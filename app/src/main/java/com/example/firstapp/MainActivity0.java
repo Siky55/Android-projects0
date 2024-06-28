@@ -6,7 +6,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 public class MainActivity0 extends AppCompatActivity {
 
     @Override

@@ -45,4 +45,31 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+
+    <string name="question_text">Jaký je %1$d. akord ve stupnici %2$s dur?</string>
+    <string name="submit_button_text">Potvrdit</string>
+    <string name="correct_answer_text">Správně!</string>
+    <string name="wrong_answer_text">Špatně, zkuste znovu.</string>
+
+    <string-array name="notes_array">
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>A</item>
+        <item>B</item>
+    </string-array>
+
+    <string-array name="scales_array">
+        <item>major</item>
+        <item>minor</item>
+    </string-array>
+
+    <string-array name="accidentals_array">
+        <item>bez předznamenání</item>
+        <item>♯</item>
+        <item>♭</item>
+    </string-array>
+
 </resources>
