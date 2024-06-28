@@ -122,7 +122,7 @@ public class QuizActivity extends AppCompatActivity {
             selectedAccidental = "";
         }
 
-        if (selectedNote.equals(correctNote) && selectedAccidental.equals("") && selectedScale.equals("major")) {
+        if (selectedNote.equals(correctNote) && selectedAccidental.isEmpty() && selectedScale.equals("major")) {
             Toast.makeText(this, getString(R.string.correct_answer_text), Toast.LENGTH_SHORT).show();
             generateNewQuestion();
         } else {
