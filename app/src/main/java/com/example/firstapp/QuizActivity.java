@@ -76,7 +76,7 @@ public class QuizActivity extends AppCompatActivity {
                 R.array.accidentals_array, android.R.layout.simple_spinner_item);
         accidentalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         accidentalSpinner.setAdapter(accidentalAdapter);
-        accidentalSpinner.setSelection(0);  // Nastavení výchozí hodnoty na "bez předznamenání"
+        accidentalSpinner.setSelection(0);
 
         generateNewQuestion();
 
@@ -92,7 +92,7 @@ public class QuizActivity extends AppCompatActivity {
         Random rand = new Random();
         int keyIndex = rand.nextInt(keys.length);
         currentKey = keys[keyIndex];
-        currentChordNumber = rand.nextInt(7) + 1; // 1 až 7
+        currentChordNumber = rand.nextInt(7) + 1;
 
         String question = getString(R.string.question_text, currentChordNumber, currentKey);
         questionTextView.setText(question);
@@ -118,7 +118,7 @@ public class QuizActivity extends AppCompatActivity {
             correctNote = minorScales[keyIndex][currentChordNumber - 1];
         }
 
-        if (selectedAccidental.equals("bez předznamenání")) {
+        if (selectedAccidental.equals("-")) {
             selectedAccidental = "";
         }
 
