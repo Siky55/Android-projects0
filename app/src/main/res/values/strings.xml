@@ -58,6 +58,7 @@
     <string name="submit_button_text">Potvrdit</string>
     <string name="correct_answer_text">Správně!</string>
     <string name="wrong_answer_text">Špatně, zkuste znovu.</string>
+    <string name="default_correct_answer">Správná odpověď: </string>
 
     <string-array name="notes_array">
         <item>C</item>
@@ -74,10 +75,10 @@
         <item>minor</item>
     </string-array>
 
-    <string-array name="accidentals_array">
-        <item>bez předznamenání</item>
-        <item>♯</item>
-        <item>♭</item>
+    <string-array name="key_signature_array">
+        <item>no signature</item>
+        <item>#</item>
+        <item>b</item>
     </string-array>
 
 </resources>
