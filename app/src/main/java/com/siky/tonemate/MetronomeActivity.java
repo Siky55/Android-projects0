@@ -3,8 +3,6 @@ package com.siky.tonemate;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +11,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 public class MetronomeActivity extends AppCompatActivity {
 
     private Button startStopButton;
@@ -20,12 +22,14 @@ public class MetronomeActivity extends AppCompatActivity {
     private ImageView indicatorImageView;
     private boolean isRunning = false;
     private int bpm = 60;
-    private Handler handler;
 
     private SoundPool soundPool;
     private int soundId;
 
     private long lastTickTime = 0;
+    private long tickInterval = 0;
+
+    private ScheduledExecutorService scheduler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,8 @@ public class MetronomeActivity extends AppCompatActivity {
         soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
         soundId = soundPool.load(this, R.raw.click, 1);
 
+        indicatorImageView.setTag("grey");
+
         startStopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,8 +57,6 @@ public class MetronomeActivity extends AppCompatActivity {
                 }
             }
         });
-
-        handler = new Handler();
     }
 
     private void startMetronome() {
@@ -67,20 +71,36 @@ public class MetronomeActivity extends AppCompatActivity {
             return;
         }
         isRunning = true;
-        indicatorImageView.setImageResource(R.drawable.red_indicator);
-        indicatorImageView.setTag("red");
-        handler.postDelayed(metronomeRunnable, calculateDelay(bpm)); // Spustí metronom se správným časováním
+
+        tickInterval = 60000 / bpm;
+
+        // Vytvoření a spuštění plánovače pro metronom
+        scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        toggleIndicator();
+                    }
+                });
+            }
+        }, 0, tickInterval, TimeUnit.MILLISECONDS);
     }
 
     private void stopMetronome() {
         isRunning = false;
-        handler.removeCallbacks(metronomeRunnable);
+        if (scheduler != null) {
+            scheduler.shutdown();
+        }
         indicatorImageView.setImageResource(R.drawable.grey_indicator);
+        indicatorImageView.setTag("grey");
     }
 
     private void toggleIndicator() {
         soundPool.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f);
-        if (indicatorImageView.getTag() == null || indicatorImageView.getTag() == "grey") {
+        if (indicatorImageView.getTag() == null || "grey".equals(indicatorImageView.getTag())) {
             indicatorImageView.setImageResource(R.drawable.red_indicator);
             indicatorImageView.setTag("red");
         } else {
@@ -89,25 +109,12 @@ public class MetronomeActivity extends AppCompatActivity {
         }
     }
 
-    private long calculateDelay(int bpm) {
-        long currentSystemTime = SystemClock.elapsedRealtime();
-        long ticksElapsed = currentSystemTime - lastTickTime;
-        lastTickTime = currentSystemTime;
-        long ticksPerBeat = 60000 / bpm;
-        return ticksPerBeat - ticksElapsed;
-    }
-
-    private Runnable metronomeRunnable = new Runnable() {
-        @Override
-        public void run() {
-            toggleIndicator(); // Blikne indikátorem v pravidelných intervalech
-            handler.postDelayed(this, calculateDelay(bpm)); // 60000 ms (1 minute) divided by bpm gives interval in milliseconds
-        }
-    };
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (scheduler != null) {
+            scheduler.shutdown();
+        }
         soundPool.release();
         soundPool = null;
     }
