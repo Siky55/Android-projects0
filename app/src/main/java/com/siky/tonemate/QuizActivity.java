@@ -16,46 +16,37 @@ public class QuizActivity extends AppCompatActivity {
     private Spinner chordSpinner, scaleSpinner, keySignatureSpinner;
     private Button submitButton;
 
-    // Definice dat
-    private final String[] keys = {"C", "D", "E", "F", "G", "A", "B"};
-    private final String[] scales = {"major", "minor", "diminished"};
+    private final String[] tones = {"C", "D", "E", "F", "G", "A", "B"};
+    private final String[] keys = {"major", "minor"};
     private final String[] keySignatures = {"", "#", "b"};
-    private final String[][] chords = {
-            // Akordy pro major stupnici
-            {"C", "Dm", "Em", "F", "G", "Am", "Bdim"},
-            {"G", "Am", "Bm", "C", "D", "Em", "F#dim"},
-            {"D", "Em", "F#m", "G", "A", "Bm", "C#dim"},
-            {"A", "Bm", "C#m", "D", "E", "F#m", "G#dim"},
-            {"E", "F#m", "G#m", "A", "B", "C#m", "D#dim"},
-            {"B", "C#m", "D#m", "E", "F#", "G#m", "A#dim"},
-            {"F#", "G#m", "A#m", "B", "C#", "D#m", "E#dim"},
-            {"Db", "Ebm", "Fm", "Gb", "Ab", "Bbm", "Cdim"},
-            {"Ab", "Bbm", "Cm", "Db", "Eb", "Fm", "Gdim"},
-            {"Eb", "Fm", "Gm", "Ab", "Bb", "Cm", "Ddim"},
-            {"Bb", "Cm", "Dm", "Eb", "F", "Gm", "Adim"},
-            {"F", "Gm", "Am", "Bb", "C", "Dm", "Edim"},
 
-            // Akordy pro minor stupnici
-            {"A", "Bdim", "C", "Dm", "E", "F", "G"},
-            {"E", "F#dim", "G", "Am", "B", "C", "D"},
-            {"B", "C#dim", "D", "Em", "F#", "G", "A"},
-            {"F#", "G#dim", "A", "Bm", "C#", "D", "E"},
-            {"C#", "D#dim", "E", "F#m", "G#", "A", "B"},
-            {"G#", "A#dim", "B", "C#m", "D#", "E", "F#"},
-            {"D#", "E#dim", "F#", "G#m", "A#", "B", "C#"},
-            {"Cb", "Dbm", "Ebm", "Fb", "Gbm", "Abm", "Bbb"},
-            {"Gb", "Abm", "Bbm", "Cb", "Db", "Ebm", "Fdim"},
-            {"Db", "Ebm", "Fm", "Gb", "Ab", "Bbm", "Cdim"},
-            {"Ab", "Bbm", "Cm", "Db", "Eb", "Fm", "Gdim"},
-            {"Eb", "Fm", "Gm", "Ab", "Bb", "Cm", "Ddim"}
+    private final String[][] majorChords = {
+            {"C", "Dm", "Em", "F", "G", "Am", "Bdim"},
+            {"D", "Em", "F#m", "G", "A", "Bm", "C#dim"},
+            {"E", "F#m", "G#m", "A", "B", "C#m", "D#dim"},
+            {"F", "Gm", "Am", "Bb", "C", "Dm", "Edim"},
+            {"G", "Am", "Bm", "C", "D", "Em", "F#dim"},
+            {"A", "Bm", "C#m", "D", "E", "F#m", "G#dim"},
+            {"B", "C#m", "D#m", "E", "F#", "G#m", "A#dim"}
     };
+
+    private final String[][] minorChords = {
+            {"Am", "Bdim", "C", "Dm", "Em", "F", "G"},
+            {"Bm", "C#dim", "D", "Em", "F#m", "G", "A"},
+            {"C#m", "D#dim", "E", "F#m", "G#m", "A", "B"},
+            {"Dm", "Edim", "F", "Gm", "Am", "Bb", "C"},
+            {"Em", "F#dim", "G", "Am", "Bm", "C", "D"},
+            {"F#m", "G#dim", "A", "Bm", "C#m", "D", "E"},
+            {"G#m", "A#dim", "B", "C#m", "D#m", "E", "F#"}
+    };
+
+    private int currentChordIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        // Inicializace prvků rozhraní
         questionTextView = findViewById(R.id.questionTextView);
         chordSpinner = findViewById(R.id.chordSpinner);
         scaleSpinner = findViewById(R.id.scaleSpinner);
@@ -63,14 +54,13 @@ public class QuizActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.submitButton);
         correctAnswerTextView = findViewById(R.id.correctAnswerTextView);
 
-        // Adaptéry pro Spinners
         ArrayAdapter<String> chordAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, keys);
+                android.R.layout.simple_spinner_item, tones);
         chordAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         chordSpinner.setAdapter(chordAdapter);
 
         ArrayAdapter<String> scaleAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, scales);
+                android.R.layout.simple_spinner_item, keys);
         scaleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         scaleSpinner.setAdapter(scaleAdapter);
 
@@ -79,7 +69,6 @@ public class QuizActivity extends AppCompatActivity {
         keySignatureAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         keySignatureSpinner.setAdapter(keySignatureAdapter);
 
-        // Nastavení akce po kliknutí na tlačítko "Potvrdit"
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,56 +76,61 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        // Generování nové otázky při spuštění aktivity
         generateNewQuestion();
     }
 
-    // Metoda pro generování nové otázky
     private void generateNewQuestion() {
         Random rand = new Random();
 
-        // Náhodný výběr tónu
-        String selectedKey = keys[rand.nextInt(keys.length)];
-
-        // Náhodný výběr key signature
+        int keysIndex = rand.nextInt(keys.length);
+        int tonesIndex = rand.nextInt(tones.length);
+        String selectedKey = tones[tonesIndex];
         String selectedKeySignature = keySignatures[rand.nextInt(keySignatures.length)];
+        currentChordIndex = rand.nextInt(7);
 
-        // Náhodný výběr stupnice
-        int selectedScaleIndex = rand.nextInt(scales.length);
+        String fullKey = selectedKey + selectedKeySignature;
+        String correctChord;
+        String question;
 
-        // Získání indexu náhodného akordu
-        int randomChordIndex = rand.nextInt(chords[selectedScaleIndex].length);
-        String randomChord = chords[selectedScaleIndex][randomChordIndex];
+        if (keysIndex == 0) {
+            correctChord = majorChords[tonesIndex][currentChordIndex];
+            question = "Jaký je " + (currentChordIndex + 1) + ". akord ve stupnici " + majorChords[tonesIndex][0] + " " + keys[keysIndex] + "?";
+        } else {
+            correctChord = minorChords[tonesIndex][currentChordIndex];
+            question = "Jaký je " + (currentChordIndex + 1) + ". akord ve stupnici " + minorChords[tonesIndex][0] + " " + keys[keysIndex] + "?";
+        }
 
-        // Sestavení textu otázky
-        String question = "Jaký je " + (randomChordIndex + 1) + ". akord v " +
-                selectedKey + selectedKeySignature + (selectedScaleIndex == 0 ? "" : scales[selectedScaleIndex].substring(0, 1)) + " stupnici?";
         questionTextView.setText(question);
-
-        // Nastavení správné odpovědi do correctAnswerTextView
-        correctAnswerTextView.setText(getString(R.string.default_correct_answer) + randomChord);
+        correctAnswerTextView.setText(getString(R.string.default_correct_answer) + correctChord);
     }
 
-    // Metoda pro kontrolu odpovědi
     private void checkAnswer() {
-        String selectedKey = keys[chordSpinner.getSelectedItemPosition()];
-        int selectedScaleIndex = scaleSpinner.getSelectedItemPosition();
+        String selectedTone = chordSpinner.getSelectedItem().toString();
+        String selectedKey = scaleSpinner.getSelectedItem().toString();
         String selectedKeySignature = keySignatureSpinner.getSelectedItem().toString();
 
-        // Získání správné odpovědi pro danou kombinaci tónu, stupnice a key signature
-        String correctChord = chords[selectedScaleIndex][chordSpinner.getSelectedItemPosition()];
+        String fullAnswer = selectedTone + selectedKeySignature;
+        if (selectedKey.equals("minor")) {
+            fullAnswer += "m";
+        }
 
-        // Sestavení odpovědi uživatele
-        String userAnswer = selectedKey + selectedKeySignature + (selectedScaleIndex == 0 ? "" : scales[selectedScaleIndex].substring(0, 1));
+        int keyIndex = chordSpinner.getSelectedItemPosition();
+        int scaleIndex = scaleSpinner.getSelectedItemPosition();
 
-        // Kontrola odpovědi
-        if (userAnswer.equals(correctChord)) {
+        String userChord;
+        if (scaleIndex == 0) {
+            userChord = majorChords[keyIndex][currentChordIndex];
+        } else {
+            userChord = minorChords[keyIndex][currentChordIndex];
+        }
+
+        String correctChord = correctAnswerTextView.getText().toString().replace(getString(R.string.default_correct_answer), "").trim();
+
+        if (userChord.equals(correctChord)) {
             Toast.makeText(this, "Správně!", Toast.LENGTH_SHORT).show();
+            generateNewQuestion();
         } else {
             Toast.makeText(this, "Špatně!", Toast.LENGTH_SHORT).show();
         }
-
-        // Zobrazení správné odpovědi pro nápovědu
-        correctAnswerTextView.setVisibility(View.VISIBLE);
     }
 }
