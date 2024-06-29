@@ -1,4 +1,4 @@
-package com.example.firstapp;
+package com.siky.tonemate;
 
 import android.content.Intent;
 import android.os.Bundle;

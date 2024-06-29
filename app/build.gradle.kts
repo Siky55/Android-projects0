@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.firstapp"
+    namespace = "com.siky.tonemate"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.firstapp"
+        applicationId = "com.siky.tonemate"
         minSdk = 29
         targetSdk = 34
         versionCode = 1

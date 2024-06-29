@@ -93,7 +93,7 @@
             android:layout_weight="1"
             android:background="@drawable/xylophone_plate"
             android:soundEffectsEnabled="false"
-            android:text="C2"
+            android:text="C"
             android:textColor="@color/white" />
     </LinearLayout>
 

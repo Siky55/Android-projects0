@@ -1,4 +1,4 @@
-package com.example.firstapp;
+package com.siky.tonemate;
 
 import android.os.Bundle;
 import android.view.View;

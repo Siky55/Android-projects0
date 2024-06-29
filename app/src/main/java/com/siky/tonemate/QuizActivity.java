@@ -1,4 +1,4 @@
-package com.example.firstapp;
+package com.siky.tonemate;
 
 import android.os.Bundle;
 import android.view.View;
@@ -20,8 +20,8 @@ public class QuizActivity extends AppCompatActivity {
     private String currentKey;
     private int currentChordNumber;
 
-    private String[] keys = {"C", "G", "D", "A", "E", "B", "F#", "Db", "Ab", "Eb", "Bb", "F"};
-    private String[][] majorScales = {
+    private final String[] keys = {"C", "G", "D", "A", "E", "B", "F#", "Db", "Ab", "Eb", "Bb", "F"};
+    private final String[][] majorScales = {
             {"C", "D", "E", "F", "G", "A", "B"},
             {"G", "A", "B", "C", "D", "E", "F#"},
             {"D", "E", "F#", "G", "A", "B", "C#"},
@@ -36,7 +36,7 @@ public class QuizActivity extends AppCompatActivity {
             {"F", "G", "A", "Bb", "C", "D", "E"}
     };
 
-    private String[][] minorScales = {
+    private final String[][] minorScales = {
             {"A", "B", "C", "D", "E", "F", "G"},
             {"E", "F#", "G", "A", "B", "C", "D"},
             {"B", "C#", "D", "E", "F#", "G", "A"},

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Definice tmavého tématu aplikace -->
-    <style name="Base.Theme.FirstApp" parent="Theme.AppCompat.NoActionBar">
+    <style name="Base.Theme.ToneMate" parent="Theme.AppCompat.NoActionBar">
         <!-- Nastavení barev pro tmavý režim -->
 
 
@@ -9,5 +9,5 @@
     </style>
 
     <!-- Použití výchozího tématu pro aplikaci -->
-    <style name="Theme.FirstApp" parent="Base.Theme.FirstApp" />
+    <style name="Theme.ToneMate" parent="Base.Theme.FirstApp" />
 </resources>
