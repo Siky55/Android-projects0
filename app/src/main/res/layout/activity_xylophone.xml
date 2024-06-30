@@ -116,7 +116,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sound_info"
+            android:text="@string/sound_info_cz"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textSize="20dp"
