@@ -62,7 +62,7 @@ public class QuizActivity extends AppCompatActivity {
         keySpinner = findViewById(R.id.keySpinner);
         keySignatureSpinner = findViewById(R.id.keySignatureSpinner);
         submitButton = findViewById(R.id.submitButton);
-        correctAnswerTextView = findViewById(R.id.correctAnswerTextView);
+        //correctAnswerTextView = findViewById(R.id.correctAnswerTextView);
         rotationScreenButton = findViewById(R.id.rotateScreenButton);
 
         ArrayAdapter<String> chordAdapter = new ArrayAdapter<>(this,
@@ -119,7 +119,7 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         questionTextView.setText(question);
-        correctAnswerTextView.setText(getString(R.string.correct_answer) + request);
+        //correctAnswerTextView.setText(getString(R.string.correct_answer) + request);
     }
 
     private void checkAnswer() {
@@ -131,26 +131,6 @@ public class QuizActivity extends AppCompatActivity {
         if (selectedKey.equals("minor")) {
             fullAnswer += "m";
         }
-
-//        int toneIndex = chordSpinner.getSelectedItemPosition();
-//        int keyIndex = keySpinner.getSelectedItemPosition();
-//        int keySignatureIndex = keySpinner.getSelectedItemPosition();
-//
-//        String userChord;
-//        if (keyIndex == 0) {
-//            userChord = majorChords[toneIndex][currentChordIndex];
-//        } else {
-//            userChord = minorChords[toneIndex][currentChordIndex];
-//        }
-//
-//        String correctChord = correctAnswerTextView.getText().toString().replace(getString(R.string.correct_answer), "").trim();
-
-//        if (userChord.equals(correctChord)) {
-//            Toast.makeText(this, R.string.correct_answer_text, Toast.LENGTH_SHORT).show();
-//            generateNewQuestion();
-//        } else {
-//            Toast.makeText(this, R.string.wrong_answer_text, Toast.LENGTH_SHORT).show();
-//        }
 
         if (fullAnswer.equals(request)) {
             Toast.makeText(this, R.string.correct_answer_text, Toast.LENGTH_SHORT).show();
