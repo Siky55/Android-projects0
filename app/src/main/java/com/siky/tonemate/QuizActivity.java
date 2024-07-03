@@ -54,7 +54,10 @@ public class QuizActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.submitButton);
         correctAnswerTextView = findViewById(R.id.correctAnswerTextView);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of cf9a5bd (Detaily)
         rotationScreenButton = findViewById(R.id.rotateScreenButton);
 >>>>>>> parent of cf9a5bd (Detaily)
 
@@ -106,7 +109,11 @@ public class QuizActivity extends AppCompatActivity {
 
         questionTextView.setText(question);
 <<<<<<< HEAD
+<<<<<<< HEAD
         correctAnswerTextView.setText(getString(R.string.default_correct_answer) + correctChord);
+=======
+        correctAnswerTextView.setText(getString(R.string.correct_answer) + request);
+>>>>>>> parent of cf9a5bd (Detaily)
 =======
         correctAnswerTextView.setText(getString(R.string.correct_answer) + request);
 >>>>>>> parent of cf9a5bd (Detaily)
@@ -123,6 +130,7 @@ public class QuizActivity extends AppCompatActivity {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         int keyIndex = chordSpinner.getSelectedItemPosition();
         int scaleIndex = scaleSpinner.getSelectedItemPosition();
 
@@ -138,6 +146,8 @@ public class QuizActivity extends AppCompatActivity {
         if (userChord.equals(correctChord)) {
             Toast.makeText(this, "Správně!", Toast.LENGTH_SHORT).show();
 =======
+=======
+>>>>>>> parent of cf9a5bd (Detaily)
 //        int toneIndex = chordSpinner.getSelectedItemPosition();
 //        int keyIndex = keySpinner.getSelectedItemPosition();
 //        int keySignatureIndex = keySpinner.getSelectedItemPosition();
