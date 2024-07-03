@@ -81,7 +81,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.99" />
 
-    <!-- <TextView
+    <TextView
         android:id="@+id/correctAnswerTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline1"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/keySignatureSpinner" /> -->
+        app:layout_constraintTop_toBottomOf="@+id/keySignatureSpinner" />
 
     <ImageButton
         android:id="@+id/rotateScreenButton"
