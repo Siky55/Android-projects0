@@ -53,6 +53,10 @@ public class QuizActivity extends AppCompatActivity {
         keySignatureSpinner = findViewById(R.id.keySignatureSpinner);
         submitButton = findViewById(R.id.submitButton);
         correctAnswerTextView = findViewById(R.id.correctAnswerTextView);
+<<<<<<< HEAD
+=======
+        rotationScreenButton = findViewById(R.id.rotateScreenButton);
+>>>>>>> parent of cf9a5bd (Detaily)
 
         ArrayAdapter<String> chordAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, tones);
@@ -101,7 +105,11 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         questionTextView.setText(question);
+<<<<<<< HEAD
         correctAnswerTextView.setText(getString(R.string.default_correct_answer) + correctChord);
+=======
+        correctAnswerTextView.setText(getString(R.string.correct_answer) + request);
+>>>>>>> parent of cf9a5bd (Detaily)
     }
 
     private void checkAnswer() {
@@ -114,6 +122,7 @@ public class QuizActivity extends AppCompatActivity {
             fullAnswer += "m";
         }
 
+<<<<<<< HEAD
         int keyIndex = chordSpinner.getSelectedItemPosition();
         int scaleIndex = scaleSpinner.getSelectedItemPosition();
 
@@ -128,6 +137,30 @@ public class QuizActivity extends AppCompatActivity {
 
         if (userChord.equals(correctChord)) {
             Toast.makeText(this, "Správně!", Toast.LENGTH_SHORT).show();
+=======
+//        int toneIndex = chordSpinner.getSelectedItemPosition();
+//        int keyIndex = keySpinner.getSelectedItemPosition();
+//        int keySignatureIndex = keySpinner.getSelectedItemPosition();
+//
+//        String userChord;
+//        if (keyIndex == 0) {
+//            userChord = majorChords[toneIndex][currentChordIndex];
+//        } else {
+//            userChord = minorChords[toneIndex][currentChordIndex];
+//        }
+//
+//        String correctChord = correctAnswerTextView.getText().toString().replace(getString(R.string.correct_answer), "").trim();
+
+//        if (userChord.equals(correctChord)) {
+//            Toast.makeText(this, R.string.correct_answer_text, Toast.LENGTH_SHORT).show();
+//            generateNewQuestion();
+//        } else {
+//            Toast.makeText(this, R.string.wrong_answer_text, Toast.LENGTH_SHORT).show();
+//        }
+
+        if (fullAnswer.equals(request)) {
+            Toast.makeText(this, R.string.correct_answer_text, Toast.LENGTH_SHORT).show();
+>>>>>>> parent of cf9a5bd (Detaily)
             generateNewQuestion();
         } else {
             Toast.makeText(this, "Špatně!", Toast.LENGTH_SHORT).show();
