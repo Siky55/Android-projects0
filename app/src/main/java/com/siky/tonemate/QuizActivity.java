@@ -1,23 +1,30 @@
 package com.siky.tonemate;
 
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Random;
 
 public class QuizActivity extends AppCompatActivity {
 
     private TextView questionTextView, correctAnswerTextView;
-    private Spinner chordSpinner, scaleSpinner, keySignatureSpinner;
+    private Spinner chordSpinner, keySpinner, keySignatureSpinner;
     private Button submitButton;
+    private ImageButton rotationScreenButton;
 
     private final String[] tones = {"C", "D", "E", "F", "G", "A", "B"};
     private final String[] keys = {"major", "minor"};
+    private final String[] keysForSpinner = {"major", "minor", "dim"};
     private final String[] keySignatures = {"", "#", "b"};
 
     private final String[][] majorChords = {
@@ -42,24 +49,22 @@ public class QuizActivity extends AppCompatActivity {
 
     private int currentChordIndex;
 
+    private String fullAnswer;
+
+    private String request;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
         questionTextView = findViewById(R.id.questionTextView);
-        chordSpinner = findViewById(R.id.chordSpinner);
-        scaleSpinner = findViewById(R.id.scaleSpinner);
+        chordSpinner = findViewById(R.id.toneSpinner);
+        keySpinner = findViewById(R.id.keySpinner);
         keySignatureSpinner = findViewById(R.id.keySignatureSpinner);
         submitButton = findViewById(R.id.submitButton);
         correctAnswerTextView = findViewById(R.id.correctAnswerTextView);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of cf9a5bd (Detaily)
         rotationScreenButton = findViewById(R.id.rotateScreenButton);
->>>>>>> parent of cf9a5bd (Detaily)
 
         ArrayAdapter<String> chordAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, tones);
@@ -67,9 +72,9 @@ public class QuizActivity extends AppCompatActivity {
         chordSpinner.setAdapter(chordAdapter);
 
         ArrayAdapter<String> scaleAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, keys);
+                android.R.layout.simple_spinner_item, keysForSpinner);
         scaleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        scaleSpinner.setAdapter(scaleAdapter);
+        keySpinner.setAdapter(scaleAdapter);
 
         ArrayAdapter<String> keySignatureAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, keySignatures);
@@ -84,6 +89,17 @@ public class QuizActivity extends AppCompatActivity {
         });
 
         generateNewQuestion();
+
+    }
+
+    public void rotateScreen(View v) {
+        int currentOrientation = getResources().getConfiguration().orientation;
+
+        if (currentOrientation == Configuration.ORIENTATION_PORTRAIT) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
     }
 
     private void generateNewQuestion() {
@@ -91,89 +107,42 @@ public class QuizActivity extends AppCompatActivity {
 
         int keysIndex = rand.nextInt(keys.length);
         int tonesIndex = rand.nextInt(tones.length);
-        String selectedKey = tones[tonesIndex];
-        String selectedKeySignature = keySignatures[rand.nextInt(keySignatures.length)];
         currentChordIndex = rand.nextInt(7);
 
-        String fullKey = selectedKey + selectedKeySignature;
-        String correctChord;
         String question;
 
         if (keysIndex == 0) {
-            correctChord = majorChords[tonesIndex][currentChordIndex];
-            question = "Jaký je " + (currentChordIndex + 1) + ". akord ve stupnici " + majorChords[tonesIndex][0] + " " + keys[keysIndex] + "?";
+            request = majorChords[tonesIndex][currentChordIndex];
+            question = "Jaký je " + (currentChordIndex + 1) + ". akord ve stupnici " + majorChords[tonesIndex][0] + "?";
         } else {
-            correctChord = minorChords[tonesIndex][currentChordIndex];
-            question = "Jaký je " + (currentChordIndex + 1) + ". akord ve stupnici " + minorChords[tonesIndex][0] + " " + keys[keysIndex] + "?";
+            request = minorChords[tonesIndex][currentChordIndex];
+            question = "Jaký je " + (currentChordIndex + 1) + ". akord ve stupnici " + minorChords[tonesIndex][0] + "?";
         }
 
         questionTextView.setText(question);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        correctAnswerTextView.setText(getString(R.string.default_correct_answer) + correctChord);
-=======
         correctAnswerTextView.setText(getString(R.string.correct_answer) + request);
->>>>>>> parent of cf9a5bd (Detaily)
-=======
-        correctAnswerTextView.setText(getString(R.string.correct_answer) + request);
->>>>>>> parent of cf9a5bd (Detaily)
     }
 
     private void checkAnswer() {
         String selectedTone = chordSpinner.getSelectedItem().toString();
-        String selectedKey = scaleSpinner.getSelectedItem().toString();
+        String selectedKey = keySpinner.getSelectedItem().toString();
         String selectedKeySignature = keySignatureSpinner.getSelectedItem().toString();
 
-        String fullAnswer = selectedTone + selectedKeySignature;
+        fullAnswer = selectedTone + selectedKeySignature;
         if (selectedKey.equals("minor")) {
             fullAnswer += "m";
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        int keyIndex = chordSpinner.getSelectedItemPosition();
-        int scaleIndex = scaleSpinner.getSelectedItemPosition();
-
-        String userChord;
-        if (scaleIndex == 0) {
-            userChord = majorChords[keyIndex][currentChordIndex];
-        } else {
-            userChord = minorChords[keyIndex][currentChordIndex];
+        if (selectedKey.equals("dim")) {
+            fullAnswer += "dim";
         }
-
-        String correctChord = correctAnswerTextView.getText().toString().replace(getString(R.string.default_correct_answer), "").trim();
-
-        if (userChord.equals(correctChord)) {
-            Toast.makeText(this, "Správně!", Toast.LENGTH_SHORT).show();
-=======
-=======
->>>>>>> parent of cf9a5bd (Detaily)
-//        int toneIndex = chordSpinner.getSelectedItemPosition();
-//        int keyIndex = keySpinner.getSelectedItemPosition();
-//        int keySignatureIndex = keySpinner.getSelectedItemPosition();
-//
-//        String userChord;
-//        if (keyIndex == 0) {
-//            userChord = majorChords[toneIndex][currentChordIndex];
-//        } else {
-//            userChord = minorChords[toneIndex][currentChordIndex];
-//        }
-//
-//        String correctChord = correctAnswerTextView.getText().toString().replace(getString(R.string.correct_answer), "").trim();
-
-//        if (userChord.equals(correctChord)) {
-//            Toast.makeText(this, R.string.correct_answer_text, Toast.LENGTH_SHORT).show();
-//            generateNewQuestion();
-//        } else {
-//            Toast.makeText(this, R.string.wrong_answer_text, Toast.LENGTH_SHORT).show();
-//        }
 
         if (fullAnswer.equals(request)) {
             Toast.makeText(this, R.string.correct_answer_text, Toast.LENGTH_SHORT).show();
->>>>>>> parent of cf9a5bd (Detaily)
             generateNewQuestion();
         } else {
-            Toast.makeText(this, "Špatně!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.wrong_answer_text, Toast.LENGTH_SHORT).show();
         }
     }
+
 }

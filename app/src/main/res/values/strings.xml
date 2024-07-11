@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FirstApp</string>
+    <string name="app_name">ToneMate</string>
     <string name="click_me">Click me</string>
     <string name="click">Click</string>
     <string name="tlacitko_akce1">Akce</string>
@@ -58,7 +58,7 @@
     <string name="submit_button_text">Potvrdit</string>
     <string name="correct_answer_text">Správně!</string>
     <string name="wrong_answer_text">Špatně, zkuste znovu.</string>
-    <string name="default_correct_answer">Správná odpověď: </string>
+    <string name="correct_answer">Správná odpověď: </string>
 
     <string-array name="notes_array">
         <item>C</item>
@@ -73,6 +73,7 @@
     <string-array name="scales_array">
         <item>major</item>
         <item>minor</item>
+        <item>dim</item>
     </string-array>
 
     <string-array name="key_signature_array">
