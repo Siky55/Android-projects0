@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ToneMate"
+rootProject.name = "FirstApp"
 include(":app")
  

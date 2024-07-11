@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="@+id/guidelineH1" />
 
     <Spinner
-        android:id="@+id/toneSpinner"
+        android:id="@+id/chordSpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
@@ -30,12 +30,12 @@
         android:layout_marginTop="16dp"/>
 
     <Spinner
-        android:id="@+id/keySpinner"
+        android:id="@+id/scaleSpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/toneSpinner"
+        app:layout_constraintTop_toBottomOf="@id/chordSpinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/keySpinner"
+        app:layout_constraintTop_toBottomOf="@id/scaleSpinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
@@ -67,16 +67,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <ImageButton
-        android:id="@+id/rotateScreenButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@android:color/transparent"
-        android:onClick="rotateScreen"
-        android:src="@drawable/baseline_screen_rotation_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineH1"
         android:layout_width="wrap_content"
@@ -91,17 +81,17 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.75" />
 
-   <!-- <TextView
+    <TextView
         android:id="@+id/correctAnswerTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/correct_answer"
+        android:text="@string/default_correct_answer"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/keySignatureSpinner"
-        android:layout_marginTop="16dp"/> -->
+        android:layout_marginTop="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

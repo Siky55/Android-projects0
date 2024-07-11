@@ -2,7 +2,9 @@
     <string name="app_name">FirstApp</string>
     <string name="click_me">Click me</string>
     <string name="click">Click</string>
-    <string name="action_button_1">Akce</string>
+    <string name="tlacitko_akce1">Akce</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -13,8 +15,7 @@
     <string name="metronome">Metronome</string>
     <string name="xylophone">Xylophone</string>
 
-    <string name="sound_info_en">If the keys do not make a sound,\n increase the ringtone volume</string>
-    <string name="sound_info_cz">Pokud klávesy nevydávají zvuk,\n zvyšte hlasitost vyzvánění</string>
+    <string name="sound_info">If you can\'t hear the sound,\n increase the ringtone volume</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -56,8 +57,8 @@
     <string name="question_text">Jaký je %1$d. akord ve stupnici %2$s dur?</string>
     <string name="submit_button_text">Potvrdit</string>
     <string name="correct_answer_text">Správně!</string>
-    <string name="wrong_answer_text">Špatně, zkuste to znovu.</string>
-    <string name="correct_answer">Správná odpověď: </string>
+    <string name="wrong_answer_text">Špatně, zkuste znovu.</string>
+    <string name="default_correct_answer">Správná odpověď: </string>
 
     <string-array name="notes_array">
         <item>C</item>
@@ -75,7 +76,7 @@
     </string-array>
 
     <string-array name="key_signature_array">
-        <item></item>
+        <item>no signature</item>
         <item>#</item>
         <item>b</item>
     </string-array>
