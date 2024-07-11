@@ -1,13 +1,16 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Definice tmavého tématu aplikace -->
     <style name="Base.Theme.ToneMate" parent="Theme.AppCompat.NoActionBar">
-        <!-- Nastavení barev pro tmavý režim -->
 
+        <!-- Transparent system bars for edge-to-edge. -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
 
         <!-- Zakázání reakce na nastavení uživatele -->
         <item name="android:forceDarkAllowed">false</item>
     </style>
 
     <!-- Použití výchozího tématu pro aplikaci -->
-    <style name="Theme.ToneMate" parent="Base.Theme.FirstApp" />
+    <style name="Theme.ToneMate" parent="Base.Theme.ToneMate" />
 </resources>
