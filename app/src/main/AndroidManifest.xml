@@ -19,7 +19,8 @@
             android:name=".QuizActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity0"
-            android:theme="@style/Theme.ToneMate" />
+            android:theme="@style/Theme.ToneMate"
+            android:label="Quiz"/>
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
@@ -38,18 +39,20 @@
         </activity>
         <activity
             android:name=".CircleActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Circle"/>
         <activity
             android:name=".XylophoneActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Xylophone" />
+
         <activity
             android:name=".MetronomeActivity"
             android:exported="false"
-            android:label="Drawings" />
+            android:label="Metronome" />
         <activity
             android:name=".MainActivity0"
-            android:exported="false"
-            android:label="Old Home" />
+            android:exported="false" />
     </application>
 
 </manifest>
