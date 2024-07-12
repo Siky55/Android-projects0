@@ -81,18 +81,18 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.75" />
 
-    <TextView
-        android:id="@+id/correctAnswerTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/correct_answer"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/keySignatureSpinner"
-        android:layout_marginTop="16dp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/correctAnswerTextView"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:text="@string/correct_answer"-->
+<!--        android:textColor="@android:color/black"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/keySignatureSpinner"-->
+<!--        android:layout_marginTop="16dp"/>-->
 
     <ImageButton
         android:id="@+id/rotateScreenButton"

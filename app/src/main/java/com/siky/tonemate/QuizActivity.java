@@ -63,7 +63,7 @@ public class QuizActivity extends AppCompatActivity {
         keySpinner = findViewById(R.id.keySpinner);
         keySignatureSpinner = findViewById(R.id.keySignatureSpinner);
         submitButton = findViewById(R.id.submitButton);
-        correctAnswerTextView = findViewById(R.id.correctAnswerTextView);
+        //correctAnswerTextView = findViewById(R.id.correctAnswerTextView);
         rotationScreenButton = findViewById(R.id.rotateScreenButton);
 
         ArrayAdapter<String> chordAdapter = new ArrayAdapter<>(this,
@@ -120,7 +120,7 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         questionTextView.setText(question);
-        correctAnswerTextView.setText(getString(R.string.correct_answer) + request);
+        //correctAnswerTextView.setText(getString(R.string.correct_answer) + request);
     }
 
     private void checkAnswer() {
