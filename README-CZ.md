@@ -1,7 +1,7 @@
 # Aplikace ToneMate
 
 ## Autor
-Jan Szikora
+Jan Szikora (2024)
 
 ## Popis
 
